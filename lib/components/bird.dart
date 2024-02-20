@@ -23,7 +23,8 @@ class Bird extends SpriteGroupComponent<BirdMovement>
     gameRef.bird;
 
     size = Vector2(50, 40);
-    position = Vector2(50, gameRef.size.y / 2 - size.y / 2);
+    //position = Vector2(50, gameRef.size.y / 2 - size.y / 2);
+    position = Vector2(50, gameRef.size.y - Config.groundHeight - size.y - 5);
     current = BirdMovement.middle;
     sprites = {
       BirdMovement.middle: birdMidFlap,
@@ -37,7 +38,14 @@ class Bird extends SpriteGroupComponent<BirdMovement>
   @override
   void update(double dt) {
     super.update(dt);
-    position.y += Config.birdVelocity * dt;
+    if (current == BirdMovement.middle) {
+      print('dont do anything');
+    } else if (position.y > gameRef.size.y - Config.groundHeight - size.y - 5){
+      print('dont do anything');
+      current = BirdMovement.middle;
+    } else {
+      position.y += Config.birdVelocity * dt;
+    }
     if (position.y < 1) {
       gameOver();
     }

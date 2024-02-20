@@ -44,7 +44,7 @@ class PipeGroup extends PositionComponent with HasGameRef<FlappyBirdGame> {
       //Pipe(pipePosition: PipePosition.top, height: centerY - spacing / 2),
       Pipe(
           pipePosition: PipePosition.bottom,
-          height: heightMinusGround - (centerY + spacing / 2),
+          height: 50,
           isValid: isValid),
           textComponent
       ]);
