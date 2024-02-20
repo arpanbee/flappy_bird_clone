@@ -10,11 +10,13 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
   Pipe({
     required this.pipePosition,
     required this.height,
+    required this.isValid
   });
 
   @override
   final double height;
   final PipePosition pipePosition;
+  final bool isValid;
 
   @override
   Future<void> onLoad() async {
@@ -33,6 +35,10 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
         break;
     }
 
-    add(RectangleHitbox());
+    if (isValid) {
+      print('not adding hitbox');
+    } else {
+      add(RectangleHitbox());
+    }
   }
 }
